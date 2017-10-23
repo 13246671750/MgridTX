@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mgrid.main"
+    android:versionCode="10"
+     android:installLocation="preferExternal"
+    android:versionName="3.080" >
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <uses-sdk
+        android:minSdkVersion="17"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.MOUNT_FORMAT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <application
+        android:name="com.mgrid.uncaughtexceptionhandler.MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_jiqiren"
+        android:label="@string/app_name"
+        android:largeHeap="true" >
+
+        <!-- android:hardwareAccelerated="true" -->
+
+        <service android:name="SoundService" >
+        </service>
+
+        <activity
+            android:name="com.mgrid.main.MGridActivity"
+            android:label="@string/app_name" >
+
+            <!-- android:screenOrientation="portrait"> -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.mgrid.main.CameraActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.mgrid.main.GridviewActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.mgrid.main.ImageviewActivity"
+            android:label="@string/app_name" >
+        </activity>
+
+        <receiver android:name=".BootBroadcastReceiver" >
+
+            <!--
+        android:enabled="true"   
+        android:exported="false"   
+        android:label="SystemStartReceiver">
+            -->
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="ModeActivity"
+            android:theme="@style/DialogStyle" >
+            <meta-data
+                android:name="unityplayer.UnityActivity"
+                android:value="true" />
+            <meta-data
+                android:name="unityplayer.ForwardNativeEventsToDalvik"
+                android:value="true" />
+        </activity>
+    </application>
+
+    <uses-feature android:glEsVersion="0x00020000" />
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.touchscreen.multitouch"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.touchscreen.multitouch.distinct"
+        android:required="false" />
+
+</manifest>
